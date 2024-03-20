@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Page</title>
+    <style>
+        /* CSS for layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #efd033;
+            color: #333;
+    
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .left-section {
+            flex-grow: 1;
+            background-color: #f5f5c3;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .right-section {
+            flex-shrink: 0;
+            text-align: right;
+        }
+        h1, h2 {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        h2 {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+        .star-rating-container {
+            margin-bottom: 20px; /* Added margin to prevent overlap */
+        }
+        .star-rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            font-size: 30px;
+            display: inline-block;
+            margin-top: -10px; /* Move stars upwards */
+        }
+        .star-rating span {
+            display: inline-block;
+            position: relative;
+            width: 1.1em;
+        }
+        .star-rating span.star {
+            color: transparent;
+        }
+        .star-rating span.star:before {
+            content: '★';
+            color: #FFD700;
+            position: absolute;
+            left: 0;
+            z-index: 1;
+        }
+        .star-rating input[type=radio] {
+            display: none;
+        }
+        .star-rating input[type=radio]:checked~span.star:before {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body\>
+
+<div class="container">
+    <div class="left-section">
+        <h1>Menu</h1>
+        <h2>Breakfast</h2>
+        <h2>Lunch</h2>
+        <h2>Snacks</h2>
+        <h2>Dinner</h2>
+        <h1>Feedback</h1>
+        <textarea id="feedback" placeholder="Write your feedback here..."></textarea>
+        <h1>Food Rating</h1>
+        <div class="star-rating-container">
+            <div class="star-rating">
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" title="5 stars">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="4 stars">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="3 stars">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="2 stars">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="1 star">★</label>
+                </div>
+                <p id="feedback-message"></p>
+                <button type="button" onclick="submitRating()">Submit Feedback</button>
+                <script src="script.js"></script>
+            </div>
+        </div>
+        <h1>Preorders</h1>
+    <div class="dropdown">
+        <select id="day-select">
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+        </select>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Meal</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Breakfast</td>
+                <td><input type="text" id="breakfast"></td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td><input type="text" id="lunch"></td>
+            </tr>
+            <tr>
+                <td>Snack</td>
+                <td><input type="text" id="snack"></td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td><input type="text" id="dinner"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+    </div>
+    <div class="right-section">
+        <h1>Details</h1>
+        <form id="userDetails">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course"><br><br>
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year"><br><br>
+            <label for="mobile">Mobile No.:</label>
+            <input type="tel" id="mobile" name="mobile"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+<script>
+    // JavaScript for handling form submission
+    document.getElementById("userDetails").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var formData = new FormData(this); // Create a new FormData object containing form data
+        // Display form data (this can be replaced with actual form submission logic)
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+    });
+</script>
+
+</body>
+</html>
